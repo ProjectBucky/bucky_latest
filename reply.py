@@ -23,7 +23,9 @@ def reply(str):
     elif (str in ask_jokes):
         voice(tell_jokes())
     elif (str in ask_quotes):
-        voice(tell_quotes())        
+        voice(tell_quotes())  
+    elif (str in write_diary):
+        diary_entry()          
     else:
 
         
