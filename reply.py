@@ -33,39 +33,44 @@ def reply(str):
         try:
 
             searchObj=re.search( r'(.*) of (.*) and (.*)', str, re.M|re.I)
-            if(searchObj.group(1) in['sum','add']):
-                calculate('+',searchObj.group(2),searchObj.group(3))
+            if searchObj:
 
-            elif(searchObj.group(1) in['subtract','difference']):
-                voice(float(searchObj.group(2))-float(searchObj.group(3)))
+                if(searchObj.group(1) in['sum','add']):
+                    voice(float(searchObj.group(2))+float(searchObj.group(3)))
 
-            elif(searchObj.group(1) in['product','multiplication']):
-                voice(float(searchObj.group(2))*float(searchObj.group(3)))
+                elif(searchObj.group(1) in['subtract','difference']):
+                    voice(float(searchObj.group(2))-float(searchObj.group(3)))
 
-            elif(searchObj.group(1) in['quotient','division','ratio']):
-                voice(float(searchObj.group(2))/float(searchObj.group(3)))
+                elif(searchObj.group(1) in['product','multiplication']):
+                    voice(float(searchObj.group(2))*float(searchObj.group(3)))
+
+                elif(searchObj.group(1) in['quotient','division','ratio']):
+                    voice(float(searchObj.group(2))/float(searchObj.group(3)))
 
             searchObj = re.search( r'(.*) (.*) of (.*) and (.*)', str, re.M|re.I)
+            if searchObj:
 
-            if(searchObj.group(2) in['sum','add']):
-				calculate('+',searchObj.group(3),searchObj.group(4))
+                if(searchObj.group(2) in['sum','add']):
+				    voice(float(searchObj.group(3))+float(searchObj.group(4)))
 
-            elif(searchObj.group(2) in['subtract','difference']):
-				voice(float(searchObj.group(3))-float(searchObj.group(4)))
+                elif(searchObj.group(2) in['subtract','difference']):
+				    voice(float(searchObj.group(3))-float(searchObj.group(4)))
 
-            elif(searchObj.group(2) in['product','multiplication']):
-				voice(float(searchObj.group(3))*float(searchObj.group(4)))
+                elif(searchObj.group(2) in['product','multiplication']):
+				    voice(float(searchObj.group(3))*float(searchObj.group(4)))
 
-            elif(searchObj.group(2) in['quotient','division','ratio']):
-                voice(float(searchObj.group(3))/float(searchObj.group(4)))
+                elif(searchObj.group(2) in['quotient','division','ratio']):
+                    voice(float(searchObj.group(3))/float(searchObj.group(4)))
 		
 		# to call countdown timer
 				
             searchObj = re.search( r'(countdown|countdown timer|timer|countdown for|timer for|countdown timer for) (.*) (.*)', str, re.M|re.I)
             if searchObj:
+                
                 countdown(searchObj.group(2),searchObj.group(3))
             searchObj = re.search( r'(countdown|countdown timer|timer|countdown for|timer for|countdown timer for) (.*)', str, re.M|re.I)	
             if searchObj:
+                
                 countdown(searchObj.group(2))
 
 		    #to call tell day or yesterday or tomorrow
@@ -91,7 +96,7 @@ def reply(str):
                 dictionary(searchObj.group(2))  
 
         except AttributeError:
-			voice("Sorry. Some error, has occured!")
+            voice("Sorry. something error, has occured!")
         except ValueError:
 			voice("Sorry. something went wrong!")
 
