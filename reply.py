@@ -87,7 +87,7 @@ def reply(str):
 		#make code for custom dates
 
         #to call dictionary
-            searchObj = re.search( r'(define|what is the meaning of|meaning of|what is meaning of) (.*)', str, re.M|re.I)
+            searchObj = re.search( r'(define|what is the meaning of|meaning of|what is meaning of|who is|google) (.*)', str, re.M|re.I)
 
             if searchObj:
                 dictionary(searchObj.group(2))
@@ -95,6 +95,15 @@ def reply(str):
             if searchObj:
                 dictionary(searchObj.group(2))  
 
+        #to play diary
+            searchObj = re.search( r'(define|what is the meaning of|meaning of|what is meaning of) (.*)', str, re.M|re.I)
+
+            if searchObj:
+                dictionary(searchObj.group(2))
+            searchObj = re.search( r'(what does the word|what does) (.*) (means|mean)', str, re.M|re.I)
+            if searchObj:
+                dictionary(searchObj.group(2))  
+                 
         except AttributeError:
             voice("Sorry. something error, has occured!")
         except ValueError:

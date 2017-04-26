@@ -113,9 +113,9 @@ def dictionary(word):
 	req = urllib2.Request(url, headers=hdr)
 	page = urllib2.urlopen(req)
 	from bs4 import BeautifulSoup
-	soup = BeautifulSoup(page)
+	soup = BeautifulSoup(page,'html.parser')
 	definitions= re.sub(r'\\[^\\]*\\ [0-9][a-z] :','',(re.sub(r'\([^)]*\)', '', soup.find("span",class_='st').text)))
-	print definitions
+	voice(definitions) 
 
 
 def diary_entry():
