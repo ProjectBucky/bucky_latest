@@ -7,4 +7,5 @@ about_creators=['who created you','who made you','who is your father','who is yo
 about_skills=['what can you do','what are your skills','what are your abilities']
 about_user=['what is my name','who am i','who are you talking to','do you know me','tell my name','tell me my name','what do you know about me']
 where_are_you=['where is your house','where is your home','where do your live','tell me your address','what is your address','where are you']
-
+ask_jokes=['tell a joke','tell me a joke','hear me a joke','one joke please','joke','jokes']
+ask_quotes=['say a quote','motivate me','tell me a quote','tell a motivational quote','tell me a motivational quote','quotes','quote','motivate']

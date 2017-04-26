@@ -3,7 +3,7 @@ import pyttsx
 import pyaudio  
 import wave
 import time
- 
+from jokes_and_quotes import *
         
 def voice (str):
     engine = pyttsx.init()
@@ -39,11 +39,12 @@ def toss_coin():
 		voice("Tails")
 		
 def tell_jokes():
-	joke_val=random.randint(0,3)
+	joke_val=random.randint(0,6)
 	voice(jokes[joke_val])
 
-def tell_quote():
-	quote_val=random.randint(0,3)
+def tell_quotes():
+	quote_val=random.randint(0,10)
+	voice(quotes[quote_val])
 	
 def tell_time():
 	return time.strftime('%I, %M , %p !')

@@ -20,9 +20,13 @@ def reply(str):
         voice("i can recognize and carry out basic voice commands, and predict your expenses with help of machine learning")
     elif (str in ask_date):
     	voice(tell_date())
+    elif (str in ask_jokes):
+        voice(tell_jokes())
+    elif (str in ask_quotes):
+        voice(tell_quotes())        
     else:
 
-        diary_entry()
+        
 		#to call calculator
         try:
 
