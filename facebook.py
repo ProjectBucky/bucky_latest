@@ -1,3 +1,4 @@
+import sys
 from robobrowser import RoboBrowser
 fburl = "https://mbasic.facebook.com/"
 import random
@@ -52,3 +53,7 @@ def post(post_text):
     form = fbbrowser.get_form(0)
     form["xhpc_message"]=post_text
     fbbrowser.submit_form(form)
+
+if __name__ == '__main__':
+    login("dinkan","dinkan")
+    post(" ".join(sys.argv[1:]))
