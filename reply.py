@@ -17,7 +17,7 @@ def reply(str):
     elif (str in where_are_you):
         voice("I am probably inside someone's computer")    
     elif (str in about_skills):
-        voice("i can recognize and carry out basic voice commands, and predict your expenses with help of machine learning")
+        voice("i can recognize and carry out basic voice commands, monitor your expenses, search internet for you, and much more!")
     elif (str in ask_date):
     	voice(tell_date())
     elif (str in ask_jokes):
@@ -96,14 +96,13 @@ def reply(str):
                 dictionary(searchObj.group(2))  
 
         #to play diary
-            searchObj = re.search( r'(define|what is the meaning of|meaning of|what is meaning of) (.*)', str, re.M|re.I)
+            searchObj = re.search( r'(play diary|read diary) (on|of) (.*) (.*) (.*)', str, re.M|re.I)
 
             if searchObj:
-                dictionary(searchObj.group(2))
-            searchObj = re.search( r'(what does the word|what does) (.*) (means|mean)', str, re.M|re.I)
-            if searchObj:
-                dictionary(searchObj.group(2))  
-                 
+                play_diary(searchObj.group(3),searchObj.group(4),searchObj.group(5))
+              
+        #add code to play more general dates
+
         except AttributeError:
             voice("Sorry. something error, has occured!")
         except ValueError:

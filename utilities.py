@@ -11,21 +11,24 @@ def voice (str):
     engine.runAndWait()
 
 def play_wav(filename):
+	try:
 
-	chunk = 1024 
-	f = wave.open(filename,"rb")
-	p = pyaudio.PyAudio()
-	stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
+		chunk = 1024 
+		f = wave.open(filename,"rb")
+		p = pyaudio.PyAudio()
+		stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
                 channels = f.getnchannels(),  
                 rate = f.getframerate(),  
                 output = True)
-	data = f.readframes(chunk) 
-	while data:  
-		stream.write(data)  
-		data = f.readframes(chunk)
-	stream.stop_stream()  
-	stream.close()
-	p.terminate()
+		data = f.readframes(chunk) 
+		while data:  
+			stream.write(data)  
+			data = f.readframes(chunk)
+		stream.stop_stream()  
+		stream.close()
+		p.terminate()
+	except IOError:
+		voice("Sorry. I could not find that file!")	
 
 def roll_dice():
 	dice_val = random.randint(1,7)
@@ -156,3 +159,9 @@ def diary_entry():
 		voice("Sorry! some error has occured.")	
 		return
 
+def play_diary(day,month,year):
+	month_names={'january':'01','february':'02','march':'03','april':'04','may':'05','june':'06','july':'07','august':'08','september':'09','october':'10','november':'11','december':'12'}
+	month=month_names[month.lower()]
+	
+	filename="diary/"+day+"_"+month+"_"+year+".wav"
+	play_wav(filename)
